@@ -46,7 +46,7 @@ class Manticoresearch < Formula
   end
 
   service do
-    run [opt_bin/"searchd", "--config", etc/"manticore/manticore.conf", "--nodetach"]
+    run [opt_bin/"searchd", "--config", etc/"manticoresearch/manticore.conf", "--nodetach"]
     keep_alive false
     working_dir HOMEBREW_PREFIX
   end
