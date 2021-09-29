@@ -7,11 +7,9 @@ class Manticoresearch < Formula
   version_scheme 1
 
   bottle do
-    rebuild 1
-    sha256 arm64_big_sur: "e285345ff7b6a8a99c0cbac69232301a6ad97cd09abae93bfffce5d3885f6ac2"
-    sha256 big_sur:       "11dfe819517e1b8c379d761ed9391192bb585564588a0ee23f85880a4b7e2f8c"
-    sha256 catalina:      "77c342a7a0d4a7c786b2c777b92522ab8b9eae7806074b0f81112cd7890c4d91"
-    sha256 mojave:        "f20768ffb1961f40fe39b3bebd20491f31cd2d91f9c43c4b5897458a50354a06"
+    root_url "https://github.com/manticoresoftware/homebrew-manticore/releases/download/manticoresearch-4.0.2"
+    sha256 big_sur:  "f7d0f63c479bfb643fc397f30368686455ae746427b2db1eb5b39156521c3699"
+    sha256 catalina: "a74876b3e7b5ab4ede406a37e689a696b16dd6e06b60b4592cf833d6d6900aff"
   end
 
   depends_on "boost" => :build
@@ -47,7 +45,7 @@ class Manticoresearch < Formula
   end
 
   service do
-    run [opt_bin/"searchd", "--config", etc/"manticoresearch/manticore.conf", "--nodetach"]
+    run [opt_bin/"searchd", "--config", etc/"manticore/manticore.conf", "--nodetach"]
     keep_alive false
     working_dir HOMEBREW_PREFIX
   end
