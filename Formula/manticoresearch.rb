@@ -1,13 +1,13 @@
 class Manticoresearch < Formula
   desc "Open source database for search"
   homepage "https://www.manticoresearch.com"
-  url "https://github.com/manticoresoftware/manticoresearch/archive/manticore-4.0.2.tar.gz"
-  sha256 "8d99820107265af219100668e4570304b1d6aed76026fa89c66ec30de9af4f0f"
+  url "https://github.com/manticoresoftware/manticoresearch/archive/refs/tags/4.2.0.tar.gz"
+  sha256 "6b4af70fcc56b40aa83e606240b237e47e54c0bfbfdd32c47788d59469ef7146"
   license "GPL-2.0-only"
   version_scheme 1
 
   bottle do
-    root_url "https://github.com/manticoresoftware/homebrew-manticore/releases/download/manticoresearch-4.0.2"
+    root_url "https://github.com/manticoresoftware/homebrew-manticore/releases/download/manticoresearch-4.2.0"
     rebuild 2
     sha256 big_sur:  "41cfb3ee3e282b7af66186e10eba83adb2ecf2ef99a32b4a8e0bf51eba1562bd"
     sha256 catalina: "b1d13d52f138077ef626a40991c2fa06730d8c154ba49cda950e18ca66d52e00"
