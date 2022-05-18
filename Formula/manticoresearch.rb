@@ -1,8 +1,8 @@
 class Manticoresearch < Formula
   desc "Easy to use open source fast database for search"
   homepage "https://manticoresearch.com"
-  url "https://github.com/manticoresoftware/manticoresearch/tarball/5.0.0"
-  sha256 "38603cc9ee50ce13e6be85bc61227736e0da1c437c77ef85cd044b7b04f86183"
+  url "https://github.com/manticoresoftware/manticoresearch/archive/5.0.0.tar.gz"
+  sha256 "7895c5ddd88df8dc4151e007307144c12afc29ed4d2bc4b129fc57a7fb6709ea"
   license "GPL-2.0-only"
   version_scheme 1
 
