@@ -1,15 +1,13 @@
 class Manticoresearch < Formula
   desc "Open source database for search"
   homepage "https://www.manticoresearch.com"
-  url "https://github.com/manticoresoftware/manticoresearch/archive/5.0.0.tar.gz"
-  sha256 "7895c5ddd88df8dc4151e007307144c12afc29ed4d2bc4b129fc57a7fb6709ea"
+  url "https://github.com/manticoresoftware/manticoresearch/archive/5.0.2.tar.gz"
+  sha256 "ca7828a6841ed8bdbc330516f85ad3a85749998f443b9de319cec60e12c64c07"
   license "GPL-2.0-only"
   version_scheme 1
 
   bottle do
-    root_url "https://github.com/manticoresoftware/homebrew-manticore/releases/download/manticoresearch-5.0.0"
-    sha256 big_sur: "300c44df8aa63c00576c7491edce28c4f299950138d8ef627bd6e97ef6240f5d"
-    sha256 catalina: "2e84e7e2c8b381818547125bad9b1b833d6bb551b36caaf61d2c721e50a257ab"
+    root_url "https://github.com/manticoresoftware/homebrew-manticore/releases/download/manticoresearch-5.0.2"
   end
 
   depends_on "boost" => :build
