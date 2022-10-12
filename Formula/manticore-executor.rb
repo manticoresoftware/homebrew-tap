@@ -1,8 +1,8 @@
 class ManticoreExecutor < Formula
   desc "Custom built PHP to run misc scripts of Manticore"
   homepage "https://github.com/manticoresoftware/executor"
-  url "https://github.com/manticoresoftware/executor/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "ba47ed71767e942001861112bfb04b9470a728ec607c40dcf9866597cdb17633"
+  url "https://github.com/manticoresoftware/executor/archive/refs/tags/v0.2.15.tar.gz"
+  sha256 "13dbe6638694eedab3ebd319514917cf0a2ef4724661aa5f45278cce17218dfa"
 
   bottle do
     root_url "https://github.com/manticoresoftware/homebrew-manticore/releases/download/manticoreexecutor-0.1.0"
@@ -15,10 +15,12 @@ class ManticoreExecutor < Formula
   depends_on "bison" => :build
   depends_on "curl" => :build
   depends_on "make" => :build
+  depends_on "pkg-config" => :build
   depends_on "re2c" => :build
+  depends_on "zstd"
 
   def install
-    php_version = "8.1.10"
+    php_version = "8.1.11"
     php_dir = `pwd`.strip + "/php-src-php-#{php_version}"
     system "./build-osx", php_version, "1"
     bin.install "#{php_dir}/dist/bin/php" => "manticore-executor"
