@@ -19,4 +19,9 @@ class ManticoreColumnarLib < Formula
       system "make", "install"
     end
   end
+  test do
+    dir = share
+    output = shell_output("file #{dir}/manticore/modules/lib_manticore_columnar.so")
+    assert_match "64-bit", output
+  end
 end
