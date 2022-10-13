@@ -20,6 +20,7 @@ class Manticoresearch < Formula
   depends_on "mysql" => :build
   depends_on "postgresql@14" => :build
   depends_on "openssl@1.1"
+  depends_on "manticoresoftware/manticore/manticore-backup" => :recommended
 
   conflicts_with "sphinx", because: "manticore is a fork of sphinx"
 
