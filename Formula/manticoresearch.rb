@@ -3,7 +3,7 @@ class Manticoresearch < Formula
   homepage "https://www.manticoresearch.com"
   url "https://github.com/manticoresoftware/manticoresearch/archive/refs/tags/5.0.3.tar.gz"
   sha256 "416b9e609529af9cf9570b41e3e770de9511c5ed4d0c27530bfec7da396b13b2"
-  license "GPL-2.0-only"
+  license "GPL-2.0"
   version_scheme 1
 
   bottle do
