@@ -2,7 +2,7 @@ class ManticoreColumnarLib < Formula
   desc "Column-oriented storage library"
   homepage "https://github.com/manticoresoftware/columnar/"
   url "https://github.com/manticoresoftware/columnar/archive/1.16.1.tar.gz"
-  sha256 "b873aa42be1bd44037c1b2d94ba8dc75c27904012feae105d521d222caa465a6"
+  sha256 "2778e4d8c2fa065cc56d6071f602e5a8c76a0223456f6e046353d62639983d8b"
   license "Apache-2.0"
 
   bottle do
