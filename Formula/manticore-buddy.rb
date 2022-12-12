@@ -15,6 +15,7 @@ class ManticoreBuddy < Formula
   depends_on "composer" => :build
   depends_on "php" => :build
   depends_on "php" => :test
+  depends_on "curl"
 
   def install
     build_dir = `pwd`.strip + "/build"
