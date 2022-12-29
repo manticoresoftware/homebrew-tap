@@ -2,7 +2,7 @@ class Manticoresearch < Formula
   desc "Open source database for search"
   homepage "https://www.manticoresearch.com"
   url "https://github.com/manticoresoftware/manticoresearch/archive/refs/tags/5.0.3.tar.gz"
-  sha256 "416b9e609529af9cf9570b41e3e770de9511c5ed4d0c27530bfec7da396b13b2"
+  sha256 "011560181fbb80c5c53cf8e8d0f2d2344cf78a5e07908eaa8f1fc84c84e9f64c"
   license "GPL-2.0"
   version_scheme 1
 
