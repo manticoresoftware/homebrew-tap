@@ -1,9 +1,11 @@
 class ManticoreColumnarLib < Formula
   desc "Manticore Columnar Library"
   homepage "https://github.com/manticoresoftware/columnar/"
-  url "https://github.com/manticoresoftware/columnar/archive/1.16.1.tar.gz"
   url "https://github.com/manticoresoftware/columnar.git", revision: "d0da46228b3c06b7a30aad9c9b8abce1ee3cba71"
+  version "1.16.1-2023012002-d0da462"
   license "Apache-2.0"
+  version_scheme 1
+  head "https://github.com/manticoresoftware/columnar.git"
 
   bottle do
     root_url "https://github.com/manticoresoftware/homebrew-manticore/releases/download/manticore-columnar-lib-1.16.1"
