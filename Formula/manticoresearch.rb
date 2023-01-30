@@ -1,7 +1,7 @@
 class Manticoresearch < Formula
   desc "Open source database for search"
   homepage "https://www.manticoresearch.com"
-  url "https://github.com/manticoresoftware/manticoresearch.git", revision: "6ffa0d18c68813f9d5fa942532cdec391280a90a"
+  url "https://github.com/manticoresoftware/manticoresearch.git", branch: "brew-share-dir", revision: "9b8ec723c99152a2d9fd649a972fbfd95da006a5"
   version "5.0.3-2023012600-6ffa0d1"
   license "GPL-2.0"
   version_scheme 1
@@ -15,25 +15,37 @@ class Manticoresearch < Formula
 
   depends_on "boost" => :build
   depends_on "cmake" => :build
-  depends_on "libpq" => :build
-  depends_on "mysql" => :build
+  depends_on "icu4c"
+  depends_on "libpq"
+  depends_on "mysql-client"
   depends_on "postgresql@14" => :build
   depends_on "openssl@1.1"
+  depends_on "unixodbc"
+  depends_on "zstd"
   depends_on "manticoresoftware/manticore/manticore-backup" => :recommended
 
   conflicts_with "sphinx", because: "manticore is a fork of sphinx"
 
+  fails_with gcc: "5"
+
   def install
+    ENV["ICU_ROOT"] = Formula["icu4c"].opt_prefix.to_s
+    ENV["OPENSSL_ROOT_DIR"] = Formula["openssl"].opt_prefix.to_s
+    ENV["MYSQL_ROOT_DIR"] = Formula["mysql-client"].opt_prefix.to_s
+    ENV["PostgreSQL_ROOT"] = Formula["libpq"].opt_prefix.to_s
+
     args = %W[
-      -DCMAKE_INSTALL_LOCALSTATEDIR=#{var}
-      -DDISTR_BUILD=macosbrew
-      -DBoost_NO_BOOST_CMAKE=ON
-      -DWITH_ODBC=OFF
+      -DDISTR_BUILD=homebrew
+      -DWITH_ICU_FORCE_STATIC=OFF
+      -D_LOCALSTATEDIR=#{var}
+      -D_RUNSTATEDIR=#{var}/run
+      -D_SYSCONFDIR=#{etc}
     ]
 
     mkdir "build" do
-      system "cmake", "..", *std_cmake_args, *args
-      system "make", "install"
+      system "cmake", "-S", "..", "-B", "build", *std_cmake_args, *args
+      system "cmake", "--build", "build"
+      system "cmake", "--install", "build"
     end
   end
 
@@ -41,6 +53,9 @@ class Manticoresearch < Formula
     (var/"run/manticore").mkpath
     (var/"log/manticore").mkpath
     (var/"manticore/data").mkpath
+
+    # Fix old config path (actually it was always wrong and never worked; however let's check)
+    mv etc/"manticore/manticore.conf", etc/"manticoresearch/manticore.conf" if (etc/"manticore/manticore.conf").exist?
   end
 
   service do
