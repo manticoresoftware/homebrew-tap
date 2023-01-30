@@ -15,10 +15,10 @@ class Manticoresearch < Formula
 
   depends_on "boost" => :build
   depends_on "cmake" => :build
+  depends_on "postgresql@14" => :build
   depends_on "icu4c"
   depends_on "libpq"
   depends_on "mysql-client"
-  depends_on "postgresql@14" => :build
   depends_on "openssl@1.1"
   depends_on "unixodbc"
   depends_on "zstd"
