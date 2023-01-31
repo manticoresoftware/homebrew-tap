@@ -3,15 +3,11 @@ require "fileutils"
 class ManticoreBuddy < Formula
   desc "Manticore Search's sidecar which helps it with various tasks"
   homepage "https://github.com/manticoresoftware/manticoresearch-buddy"
-  url "https://github.com/manticoresoftware/manticoresearch-buddy/archive/refs/tags/v0.1.15.tar.gz"
-  sha256 "f7c7fd7ef80b2883871ba11b858c9bb3a62583c05e04630682719a352bb4a60a"
-
-  bottle do
-    root_url "https://github.com/manticoresoftware/homebrew-manticore/releases/download/manticore-buddy-0.1.15"
-    rebuild 1
-    sha256 cellar: :any_skip_relocation, monterey: "1d1791b6aae0673ad83d3f529af2996e78e6bcadf2811154ea5ae80c4ebd5b29"
-    sha256 cellar: :any_skip_relocation, big_sur:  "3d750d7eea836ba011a193010d5149e60ba8d7198a53400e64afc30793680793"
-  end
+  url "https://github.com/manticoresoftware/manticoresearch-buddy.git", revision: "76adf97944e532f3739d2075c34b82030f998666"
+  version "0.3.4-2023013110-76adf97"
+  license "GPL-2.0"
+  version_scheme 1
+  head "https://github.com/manticoresoftware/manticoresearch-buddy.git"
 
   depends_on "composer" => :build
   depends_on "php" => :build

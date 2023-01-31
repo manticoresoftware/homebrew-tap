@@ -1,14 +1,11 @@
 class ManticoreExecutor < Formula
   desc "Custom built PHP to run misc scripts of Manticore"
   homepage "https://github.com/manticoresoftware/executor"
-  url "https://github.com/manticoresoftware/executor/archive/refs/tags/v0.6.2.tar.gz"
-  sha256 "6b0ebacac885b8fbde5910454bf9f810e92b0a5d31906d36ed3af3ca0cecd49b"
-
-  bottle do
-    root_url "https://github.com/manticoresoftware/homebrew-manticore/releases/download/manticore-executor-0.6.2"
-    sha256 monterey: "8a2b50bd875edd0725f40920c5d783d9855ecfdcbc3ab0c1d08ffa55a463ca44"
-    sha256 big_sur:  "7dc60ce8c19631bb7541ba1031fba12e797aade465ec1de5bf88d511fa3562a5"
-  end
+  url "https://github.com/manticoresoftware/executor.git", revision: "d95e43eb808a99e4da530ee95861ed18e6ba03b5"
+  version "0.6.2-2023012313-d95e43e"
+  license "GPL-2.0"
+  version_scheme 1
+  head "https://github.com/manticoresoftware/executor.git"
 
   depends_on "autoconf" => :build
   depends_on "automake" => :build
