@@ -21,6 +21,7 @@ class Manticoresearch < Formula
   depends_on "openssl@1.1"
   depends_on "unixodbc"
   depends_on "zstd"
+  depends_on "manticoresoftware/manticore/manticore-buddy" => :recommended
   depends_on "manticoresoftware/manticore/manticore-backup" => :recommended
 
   conflicts_with "sphinx", because: "manticore is a fork of sphinx"
