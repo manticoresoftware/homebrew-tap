@@ -1,18 +1,11 @@
 class Manticoresearch < Formula
   desc "Open source database for search"
   homepage "https://www.manticoresearch.com"
-  url "https://github.com/manticoresoftware/manticoresearch.git", revision: "833705a1cd98ed48f75252e5a15fb869d99b1c61"
-  version "5.0.3-2023013021-833705a"
+  url "https://github.com/manticoresoftware/manticoresearch.git", revision: "7542cb76df91bcc3412082747ee3d651263dc36b"
+  version "5.0.3-2023020218-7542cb7"
   license "GPL-2.0"
   version_scheme 1
   head "https://github.com/manticoresoftware/manticoresearch.git"
-
-  bottle do
-    root_url "https://github.com/manticoresoftware/homebrew-manticore/releases/download/manticoresearch-5.0.3-2023013021-833705a"
-    rebuild 1
-    sha256 monterey: "120245413b955e669ea01739c8ce9a83ce40fcc5c0e4106282f76618c2584575"
-    sha256 big_sur:  "b4460e793a5723c5b431ab770764b486965b42178d571346f23dd4268ae7074f"
-  end
 
   depends_on "boost" => :build
   depends_on "cmake" => :build
@@ -62,6 +55,7 @@ class Manticoresearch < Formula
 
   service do
     run [opt_bin/"searchd", "--config", etc/"manticoresearch/manticore.conf", "--nodetach"]
+    environment_variables PATH: std_service_path_env
     keep_alive false
     working_dir HOMEBREW_PREFIX
   end
