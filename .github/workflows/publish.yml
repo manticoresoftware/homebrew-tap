@@ -20,11 +20,15 @@ jobs:
           PULL_REQUEST: ${{ github.event.pull_request.number }}
         run: brew pr-pull --debug --no-autosquash --tap=$GITHUB_REPOSITORY $PULL_REQUEST
 
+      - id: vars
+        run: |
+          echo "::set-output name=target_branch::$(echo ${{ github.base_ref}}  | cut -d/ -f3)"
+
       - name: Push commits
         uses: Homebrew/actions/git-try-push@master
         with:
           token: ${{ github.token }}
-          branch: ${{ github.base_ref }}
+          branch: ${{ steps.vars.outputs.target_branch }}
 
       - name: Delete branch
         if: github.event.pull_request.head.repo.fork == false
