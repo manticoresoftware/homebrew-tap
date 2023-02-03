@@ -1,8 +1,8 @@
 class Manticoresearch < Formula
   desc "Open source database for search"
   homepage "https://www.manticoresearch.com"
-  url "https://github.com/manticoresoftware/manticoresearch.git", revision: "7542cb76df91bcc3412082747ee3d651263dc36b"
-  version "5.0.3-2023020218-7542cb7"
+  url "https://github.com/manticoresoftware/manticoresearch.git", branch: "manticore-6.0.0", revision: "7542cb76df91bcc3412082747ee3d651263dc36b"
+  version "6.0.0-2023020313-e12d6a9"
   license "GPL-2.0"
   version_scheme 1
   head "https://github.com/manticoresoftware/manticoresearch.git"
