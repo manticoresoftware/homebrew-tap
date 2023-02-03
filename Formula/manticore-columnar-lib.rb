@@ -7,13 +7,6 @@ class ManticoreColumnarLib < Formula
   version_scheme 1
   head "https://github.com/manticoresoftware/columnar.git"
 
-  bottle do
-    root_url "https://github.com/manticoresoftware/homebrew-manticore/releases/download/manticore-columnar-lib-2.0.0-2023013023-a7c703d"
-    sha256 cellar: :any_skip_relocation, monterey: "7944dccf08985c6da253f781a82d08be3af1fa0de4aa39fad33e37b12375d2d8"
-    sha256 cellar: :any_skip_relocation, big_sur:  "2b58822eec2c957fff7b89d9aea67f6b16512801899b796e39db1a45befd30b9"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "f7e604f3e12e3d98df8366e92037bb819e3bf02821cc957a80d8852705a66e46"
-  end
-
   depends_on "boost" => :build
   depends_on "cmake" => :build
 
