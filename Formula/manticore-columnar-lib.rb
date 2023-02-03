@@ -1,8 +1,8 @@
 class ManticoreColumnarLib < Formula
   desc "Manticore Columnar Library"
   homepage "https://github.com/manticoresoftware/columnar/"
-  url "https://github.com/manticoresoftware/columnar.git", revision: "d0da46228b3c06b7a30aad9c9b8abce1ee3cba71"
-  version "1.16.1-2023012002-d0da462"
+  url "https://github.com/manticoresoftware/columnar.git", branch: "2.0.0", revision: "a7c703d90351b696a58ab6573059fac7b5aa8283"
+  version "2.0.0-2023013023-a7c703d"
   license "Apache-2.0"
   version_scheme 1
   head "https://github.com/manticoresoftware/columnar.git"
