@@ -9,9 +9,9 @@ class ManticoreExtra < Formula
   version_scheme 1
 
   bottle do
-    root_url "https://github.com/manticoresoftware/homebrew-manticore/releases/download/manticore-extra-0.6.2-2023012313-d95e43e"
-    sha256 cellar: :any_skip_relocation, monterey: "9ea2394e82e2deb77f026ccf2985a92412d97ec53383acf8f8f3ce8c2e045088"
-    sha256 cellar: :any_skip_relocation, big_sur:  "51f6eb41f703fdf9ae0eee5b2273e8647c4a52514ea42409bbf81c4c4c10713a"
+    root_url "https://github.com/manticoresoftware/homebrew-manticore/releases/download/manticore-extra-0.6.2-2023012314-d95e43e"
+    sha256 cellar: :any_skip_relocation, monterey: "53b549f8059314cd9379ed43610c6bbb95ddfc61dc52ad06afbc6edba0dafe99"
+    sha256 cellar: :any_skip_relocation, big_sur:  "91c67b6bac807c6ffd3ab16348ae309794497eb99c75397db05dd361e9372fb0"
   end
 
   depends_on "manticoresoftware/manticore/manticore-columnar-lib"
