@@ -4,7 +4,7 @@ class ManticoreExtra < Formula
   desc "Meta package that includes executor and columnar lib"
   homepage "https://manticoresearch.com"
   url "file://" + File.expand_path(__FILE__)
-  version "0.6.2-2023012313-d95e43e" # Must be same as executor
+  version "0.6.2-2023012314-d95e43e" # Must be same as executor
   sha256 Digest::SHA256.file(File.expand_path(__FILE__)).hexdigest
   version_scheme 1
 
