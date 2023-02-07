@@ -2,7 +2,7 @@ class ManticoreExecutor < Formula
   desc "Custom built PHP to run misc scripts of Manticore"
   homepage "https://github.com/manticoresoftware/executor"
   url "https://github.com/manticoresoftware/executor.git", revision: "d95e43eb808a99e4da530ee95861ed18e6ba03b5"
-  version "0.6.2-2023020620-d95e43e"
+  version "0.6.2-2023020711-d95e43e"
   license "GPL-2.0"
   version_scheme 1
   head "https://github.com/manticoresoftware/executor.git"
