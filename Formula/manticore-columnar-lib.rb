@@ -7,9 +7,6 @@ class ManticoreColumnarLib < Formula
   version_scheme 1
   head "https://github.com/manticoresoftware/columnar.git"
 
-  bottle do
-  end
-
   depends_on "boost" => :build
   depends_on "cmake" => :build
 
