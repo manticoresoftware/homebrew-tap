@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Homebrew
+        env:
+          HOMEBREW_NO_INSTALL_FROM_API: 1
         uses: Homebrew/actions/setup-homebrew@master
 
       - name: Change the base branch
