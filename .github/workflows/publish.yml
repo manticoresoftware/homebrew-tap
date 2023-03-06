@@ -11,7 +11,7 @@ jobs:
       - name: Set up Homebrew
         env:
           HOMEBREW_NO_INSTALL_FROM_API: 1
-        uses: Homebrew/actions/setup-homebrew@master
+        uses: manticoresoftware/homebrew-actions/setup-homebrew@2022
 
       - name: Change the base branch
         run: |
@@ -21,7 +21,7 @@ jobs:
         shell: bash
 
       - name: Set up git
-        uses: Homebrew/actions/git-user-config@master
+        uses: manticoresoftware/homebrew-actions/git-user-config@2022
 
       - name: Pull bottles
         env:
@@ -31,7 +31,7 @@ jobs:
         run: brew pr-pull --debug --no-autosquash --tap=$GITHUB_REPOSITORY $PULL_REQUEST
 
       - name: Push commits
-        uses: Homebrew/actions/git-try-push@master
+        uses: manticoresoftware/homebrew-actions/git-try-push@2022
         with:
           token: ${{ github.token }}
           branch: ${{ github.base_ref }}
