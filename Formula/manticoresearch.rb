@@ -1,17 +1,11 @@
 class Manticoresearch < Formula
   desc "Open source database for search"
   homepage "https://www.manticoresearch.com"
-  url "https://github.com/manticoresoftware/manticoresearch.git", revision: "68cfcea87fe38e4610a7f72e7dbf3f956fdb53e8"
-  version "6.0.1-2023020323-68cfcea"
-  license "GPL-2.0"
+  url "https://github.com/manticoresoftware/manticoresearch.git", revision: "b471e62d5d47c633cf6c13a3084398f86dde6b78"
+  version "6.0.3-2023030613-b471e62"
+  license "GPL-2.0-or-later"
   version_scheme 1
   head "https://github.com/manticoresoftware/manticoresearch.git"
-
-  bottle do
-    root_url "https://github.com/manticoresoftware/homebrew-manticore/releases/download/manticoresearch-6.0.1-2023020323-68cfcea"
-    sha256 monterey: "92a01f30450fae577752f5df8af719263487fb22b491b250d09ee1e013f501c2"
-    sha256 big_sur:  "0e61c1d18d633b09ef8a00e084d68bc61e4d30dc3aed64e6ab52b3eac8c8dbaf"
-  end
 
   depends_on "boost" => :build
   depends_on "cmake" => :build
@@ -64,6 +58,10 @@ class Manticoresearch < Formula
     environment_variables PATH: std_service_path_env
     keep_alive false
     working_dir HOMEBREW_PREFIX
+  end
+
+  def plist_options
+    { manual: "ulimit -n 10000" }
   end
 
   test do
