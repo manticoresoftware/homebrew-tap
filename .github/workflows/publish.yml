@@ -9,8 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Homebrew
-        env:
-          HOMEBREW_NO_INSTALL_FROM_API: 1
         uses: manticoresoftware/homebrew-actions/setup-homebrew@2022
 
       - name: Change the base branch
@@ -27,7 +25,6 @@ jobs:
         env:
           HOMEBREW_GITHUB_API_TOKEN: ${{ github.token }}
           PULL_REQUEST: ${{ github.event.pull_request.number }}
-          HOMEBREW_NO_INSTALL_FROM_API: 1
         run: brew pr-pull --debug --no-autosquash --tap=$GITHUB_REPOSITORY $PULL_REQUEST
 
       - name: Push commits
