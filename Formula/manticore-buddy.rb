@@ -24,7 +24,8 @@ class ManticoreBuddy < Formula
   def install
     build_dir = `pwd`.strip + "/build"
     system "git", "clone", "https://github.com/manticoresoftware/phar_builder.git"
-    system "./phar_builder/bin/build", "--name=\"Manticore Buddy\"", "--package=manticore-buddy", "--index=src/main.php"
+    system "./phar_builder/bin/build", "--name=\"Manticore Buddy\"", "--package=manticore-buddy",
+"--index=src/main.php"
     dir = share
     mkdir_p "#{dir}/manticore/modules"
     mv "#{build_dir}/manticore-buddy", "#{dir}/manticore/modules/manticore-buddy"
