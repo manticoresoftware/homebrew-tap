@@ -10,7 +10,8 @@ class ManticoreBackup < Formula
 
   def install
     build_dir = `pwd`.strip + "/build"
-    system "./bin/build", "--name=\"Manticore Backup\"", "--package=manticore-backup", "--index=src/main.php"
+    system "git", "clone", "https://github.com/manticoresoftware/phar_builder.git"
+    system "./phar_builder/bin/build", "--name=\"Manticore Backup\"", "--package=manticore-backup", "--index=src/main.php"
     bin.install "#{build_dir}/manticore-backup" => "manticore-backup"
   end
 
