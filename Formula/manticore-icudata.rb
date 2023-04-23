@@ -6,12 +6,12 @@ class ManticoreIcudata < Formula
 
   on_macos do
     url "https://repo.manticoresearch.com/repository/manticoresearch_macos/dev/manticore-icudata-65l.tar.gz"
-    sha256 "05a5dcb303cd8c152e83a489a74f205497313e8fe402ca7abd7870167a5a85e3"
+    sha256 "6a937f9c8ceb4886832809b9fb1d6198a273a8b2915ca6e169aaae0245cf6713"
   end
 
   def install
     (share/"manticore/icu").mkpath
-    share.install "local/share/manticore/icu/icudt65l.dat" => "manticore/icu/icudt65l.dat"
+    share.install "manticore/icu/icudt65l.dat" => "manticore/icu/icudt65l.dat"
   end
 
   test do

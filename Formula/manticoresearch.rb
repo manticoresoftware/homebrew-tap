@@ -23,25 +23,16 @@ class Manticoresearch < Formula
   depends_on "zstd"
   depends_on "manticoresoftware/manticore-no-bottles/manticore-backup" => :recommended
   depends_on "manticoresoftware/manticore-no-bottles/manticore-buddy" => :recommended
+  depends_on "manticoresoftware/manticore-no-bottles/manticore-icudata" => :recommended
 
   conflicts_with "sphinx", because: "Manticore Search is a fork of Sphinxsearch"
 
   def install
-    bin.install Dir["local/bin/*"]
-    man1.install Dir["local/share/doc/manticore/doc/*.1"]
-    share.install "local/share/manticore"
-    include.install "local/include/manticore"
-    lib.install "local/var/lib/manticore"
-    (etc/"manticoresearch").mkpath
-
-    # HACK: /opt/homebrew instead of /usr/local
-    source_contents = IO.read("local/etc/manticore/manticore.conf")
-    modified_contents = source_contents.gsub(
-      "/usr/local/var",
-      "#{HOMEBREW_PREFIX}/var"
-    )
-    IO.write("local/etc/manticore/manticore.conf", modified_contents)
-    etc.install "local/etc/manticore/manticore.conf" => "manticoresearch/manticore.conf"
+    bin.install Dir["bin/*"]
+    man1.install Dir["share/doc/manticore/doc/*.1"]
+    share.install "share/manticore"
+    include.install "include/manticore"
+    etc.install "etc/manticoresearch"
   end
 
   def post_install
