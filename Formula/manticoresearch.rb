@@ -1,63 +1,53 @@
 class Manticoresearch < Formula
   desc "Open source database for search"
-  homepage "https://www.manticoresearch.com"
-  url "https://github.com/manticoresoftware/manticoresearch.git", branch: "manticore-6.0.4", revision: "aba1e25ecbd1e4a0977a3f601b83e927007914f5"
-  version "6.0.4-2023031400-aba1e25ec"
+  homepage "https://manticoresearch.com"
+  version "6.0.5-230422-6257ae425"
   license "GPL-2.0"
-  version_scheme 1
-  head "https://github.com/manticoresoftware/manticoresearch.git"
 
-  bottle do
-    root_url "https://github.com/manticoresoftware/homebrew-manticore/releases/download/manticoresearch-6.0.4-2023031400-aba1e25ec"
-    sha256 arm64_ventura: "ff5f9bac56d0251cf90779251569345809fa225c2266259593aefe9bc269f052"
-    sha256 monterey:      "499f90059c641bffc00bd13b5e8e56f0080222792c58f42288758afcbdd3f8f0"
-    sha256 big_sur:       "82918f8c20dc50a4793b9339e89d2c795e08de25df681db9fc4ad2e7dd0eead1"
+  on_macos do
+    on_intel do
+      url "https://repo.manticoresearch.com/repository/manticoresearch_macos/dev/manticore-6.0.5-230423-7492254e7-osx11.6-x86_64-main.tar.gz"
+      sha256 "12480e13c5f78061cc274968f9e95b76706cf2fa54d96ffa6ba3305969efe48c"
+    end
+    on_arm do
+      url "https://repo.manticoresearch.com/repository/manticoresearch_macos/dev/manticore-6.0.5-230423-7492254e7-osx11.6-arm64-main.tar.gz"
+      sha256 "7c9bb67c9deacff0bb969678edc58728eafaadea3070a92c4f7531f4313b1c57"
+    end
   end
 
-  depends_on "boost" => :build
-  depends_on "cmake" => :build
   depends_on "icu4c"
   depends_on "libpq"
   depends_on "mysql-client"
   depends_on "openssl@1.1"
   depends_on "unixodbc"
   depends_on "zstd"
-  depends_on "manticoresoftware/manticore/manticore-backup" => :recommended
-  depends_on "manticoresoftware/manticore/manticore-buddy" => :recommended
+  depends_on "manticoresoftware/manticore-no-bottles/manticore-backup" => :recommended
+  depends_on "manticoresoftware/manticore-no-bottles/manticore-buddy" => :recommended
 
-  conflicts_with "sphinx", because: "manticore is a fork of sphinx"
-
-  fails_with gcc: "5"
+  conflicts_with "sphinx", because: "Manticore Search is a fork of Sphinxsearch"
 
   def install
-    ENV["ICU_ROOT"] = Formula["icu4c"].opt_prefix.to_s
-    ENV["OPENSSL_ROOT_DIR"] = Formula["openssl"].opt_prefix.to_s
-    ENV["MYSQL_ROOT_DIR"] = Formula["mysql-client"].opt_prefix.to_s
-    ENV["PostgreSQL_ROOT"] = Formula["libpq"].opt_prefix.to_s
+    bin.install Dir["local/bin/*"]
+    man1.install Dir["local/share/doc/manticore/doc/*.1"]
+    share.install "local/share/manticore"
+    include.install "local/include/manticore"
+    lib.install "local/var/lib/manticore"
+    (etc/"manticoresearch").mkpath
 
-    args = %W[
-      -DHOMEBREW_PREFIX=#{HOMEBREW_PREFIX}
-      -DDISTR_BUILD=homebrew
-      -DWITH_ICU_FORCE_STATIC=OFF
-      -D_LOCALSTATEDIR=#{var}
-      -D_RUNSTATEDIR=#{var}/run
-      -D_SYSCONFDIR=#{etc}
-    ]
-
-    mkdir "build" do
-      system "cmake", "-S", "..", "-B", "build", *std_cmake_args, *args
-      system "cmake", "--build", "build"
-      system "cmake", "--install", "build"
-    end
+    # HACK: /opt/homebrew instead of /usr/local
+    source_contents = IO.read("local/etc/manticore/manticore.conf")
+    modified_contents = source_contents.gsub(
+      "/usr/local/var",
+      "#{HOMEBREW_PREFIX}/var"
+    )
+    IO.write("local/etc/manticore/manticore.conf", modified_contents)
+    etc.install "local/etc/manticore/manticore.conf" => "manticoresearch/manticore.conf"
   end
 
   def post_install
     (var/"run/manticore").mkpath
     (var/"log/manticore").mkpath
     (var/"manticore").mkpath
-
-    # Fix old config path (actually it was always wrong and never worked; however let's check)
-    mv etc/"manticore/manticore.conf", etc/"manticoresearch/manticore.conf" if (etc/"manticore/manticore.conf").exist?
   end
 
   service do
@@ -75,7 +65,7 @@ class Manticoresearch < Formula
       }
     EOS
     pid = fork do
-      exec bin/"searchd"
+      exec bin/"searchd", "--config", testpath/"manticore.conf"
     end
   ensure
     Process.kill(9, pid)
