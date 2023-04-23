@@ -1,17 +1,17 @@
 class Manticoresearch < Formula
   desc "Open source database for search"
   homepage "https://manticoresearch.com"
-  version "6.0.5-230422-6257ae425"
+  version "6.0.5-230424-eafab00da"
   license "GPL-2.0"
 
   on_macos do
     on_intel do
-      url "https://repo.manticoresearch.com/repository/manticoresearch_macos/dev/manticore-6.0.5-230423-7492254e7-osx11.6-x86_64-main.tar.gz"
-      sha256 "12480e13c5f78061cc274968f9e95b76706cf2fa54d96ffa6ba3305969efe48c"
+      url "https://repo.manticoresearch.com/repository/manticoresearch_macos/dev/manticore-6.0.5-230424-eafab00da-osx11.6-x86_64-main.tar.gz"
+      sha256 "58f57ce11781a18e375280fe8cf6cf12f68741a19411dc2fdd2e7874a04c500a"
     end
     on_arm do
-      url "https://repo.manticoresearch.com/repository/manticoresearch_macos/dev/manticore-6.0.5-230423-7492254e7-osx11.6-arm64-main.tar.gz"
-      sha256 "7c9bb67c9deacff0bb969678edc58728eafaadea3070a92c4f7531f4313b1c57"
+      url "https://repo.manticoresearch.com/repository/manticoresearch_macos/dev/manticore-6.0.5-230424-eafab00da-osx11.6-arm64-main.tar.gz"
+      sha256 "e2feb7c0fdf8a81d886c516f20a2d95428ae2f6439dc9fccaee64c5ecbaa364b"
     end
   end
 
