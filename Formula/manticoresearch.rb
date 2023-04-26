@@ -15,7 +15,6 @@ class Manticoresearch < Formula
     end
   end
 
-  depends_on "icu4c"
   depends_on "libpq"
   depends_on "mysql-client"
   depends_on "openssl@1.1"
