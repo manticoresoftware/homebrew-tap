@@ -6,7 +6,7 @@ class ManticoreIcudata < Formula
 
   on_macos do
     url "https://repo.manticoresearch.com/repository/manticoresearch_macos/dev/manticore-icudata-65l.tar.gz"
-    sha256 "06df35bb57def3e1a10dd9e7705e56c6a684861d2c238a132c92e3dcf6c2c52b"
+    sha256 "cadbb22c51602448cf71a9cf3c5cedda624f38799cac7b1554153da2fd648d12"
   end
 
   def install
