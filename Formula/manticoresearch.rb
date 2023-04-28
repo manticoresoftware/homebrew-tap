@@ -1,19 +1,16 @@
-class Manticoresearch < Formula
+require_relative 'manticore_helper'
+
+class Manticoresearch2 < Formula
   desc "Open source database for search"
   homepage "https://manticoresearch.com"
-  version "6.0.5-230424-eafab00da"
   license "GPL-2.0"
 
-  on_macos do
-    on_intel do
-      url "https://repo.manticoresearch.com/repository/manticoresearch_macos/dev/manticore-6.0.5-230424-eafab00da-osx11.6-x86_64-main.tar.gz"
-      sha256 "58f57ce11781a18e375280fe8cf6cf12f68741a19411dc2fdd2e7874a04c500a"
-    end
-    on_arm do
-      url "https://repo.manticoresearch.com/repository/manticoresearch_macos/dev/manticore-6.0.5-230424-eafab00da-osx11.6-arm64-main.tar.gz"
-      sha256 "e2feb7c0fdf8a81d886c516f20a2d95428ae2f6439dc9fccaee64c5ecbaa364b"
-    end
-  end
+  base_url = 'https://repo.manticoresearch.com/repository/manticoresearch_macos/dev/'
+  fetched_info = ManticoreHelper.fetch_version_and_url(base_url)
+
+  version fetched_info[:version]
+  url fetched_info[:file_url]
+  sha256 fetched_info[:sha256]
 
   depends_on "libpq"
   depends_on "mysql-client"
