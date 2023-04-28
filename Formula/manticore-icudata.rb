@@ -1,6 +1,6 @@
 require "digest"
 require "open-uri"
-require "tempfile"
+require "tmpdir"
 
 class ManticoreIcudata < Formula
   desc "Chinese segmentation data file for Manticore Search"
@@ -9,15 +9,16 @@ class ManticoreIcudata < Formula
   license "UNICODE, INC. LICENSE"
 
   on_macos do
-    tempfile = Tempfile.new("manticore-icudata")
-    tempfile.binmode
-    open("https://repo.manticoresearch.com/repository/manticoresearch_macos/dev/manticore-icudata-65l.tar.gz", "rb") do |remote_file|
-      tempfile.write(remote_file.read)
+    tmpdir = Dir.mktmpdir
+    filepath = "#{tmpdir}/manticore-icudata.tar.gz"
+    File.open(filepath, "wb") do |saved_file|
+      open("https://repo.manticoresearch.com/repository/manticoresearch_macos/dev/manticore-icudata-65l.tar.gz", "rb") do |remote_file|
+        saved_file.write(remote_file.read)
+      end
     end
-    tempfile.close
 
-    url "file://#{tempfile.path}"
-    sha256 Digest::SHA256.file(tempfile.path).hexdigest
+    url "file://#{filepath}"
+    sha256 Digest::SHA256.file(filepath).hexdigest
   end
 
   def install
