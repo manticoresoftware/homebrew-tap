@@ -1,12 +1,18 @@
 require_relative 'manticore_helper'
+require 'hardware'
 
-class Manticoresearch2 < Formula
+class Manticoresearch < Formula
   desc "Open source database for search"
   homepage "https://manticoresearch.com"
   license "GPL-2.0"
 
+  arch = Hardware::CPU.arch
   base_url = 'https://repo.manticoresearch.com/repository/manticoresearch_macos/dev/'
-  fetched_info = ManticoreHelper.fetch_version_and_url(base_url)
+  fetched_info = ManticoreHelper.fetch_version_and_url(
+    'manticorsearch',
+    base_url,
+    /(manticore-)(\d+\.\d+\.\d+-)(\d+-)([\w]+)(-osx11\.6-#{arch}-main\.tar\.gz)/
+  )
 
   version fetched_info[:version]
   url fetched_info[:file_url]
