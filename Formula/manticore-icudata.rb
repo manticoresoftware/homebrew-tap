@@ -1,5 +1,6 @@
 require "digest"
 require "open-uri"
+require "tempfile"
 
 class ManticoreIcudata < Formula
   desc "Chinese segmentation data file for Manticore Search"
@@ -8,8 +9,20 @@ class ManticoreIcudata < Formula
   license "UNICODE, INC. LICENSE"
 
   on_macos do
-    url "https://repo.manticoresearch.com/repository/manticoresearch_macos/dev/manticore-icudata-65l.tar.gz"
-    sha256 Digest::SHA256.hexdigest(URI.open(url).read)
+    # Download the file to a temporary directory
+    tempfile = Tempfile.new("manticore-icudata")
+    tempfile.binmode
+    open("https://repo.manticoresearch.com/repository/manticoresearch_macos/dev/manticore-icudata-65l.tar.gz", "rb") do |remote_file|
+      tempfile.write(remote_file.read)
+    end
+    tempfile.close
+
+    # Calculate the sha256 sum of the downloaded file
+    sha256sum = Digest::SHA256.file(tempfile.path).hexdigest
+
+    # Use the downloaded file and calculated hash in the formula
+    url "file://#{tempfile.path}"
+    sha256 sha256sum
   end
 
   def install
