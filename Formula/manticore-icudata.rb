@@ -1,3 +1,6 @@
+require "digest"
+require "open-uri"
+
 class ManticoreIcudata < Formula
   desc "Chinese segmentation data file for Manticore Search"
   homepage "https://unicode-org.github.io/icu/userguide/icu_data/"
@@ -6,7 +9,7 @@ class ManticoreIcudata < Formula
 
   on_macos do
     url "https://repo.manticoresearch.com/repository/manticoresearch_macos/dev/manticore-icudata-65l.tar.gz"
-    sha256 "e7fe6ae410f58dab9a836a268c675a6b3898f5122b472a14447c33553713053c"
+    sha256 Digest::SHA256.hexdigest(URI.open(url).read)
   end
 
   def install
