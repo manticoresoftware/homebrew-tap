@@ -1,30 +1,34 @@
+require_relative 'manticore_helper'
+require 'hardware'
 require "fileutils"
 
 class ManticoreBuddy < Formula
   desc "Manticore Search's sidecar which helps it with various tasks"
   homepage "https://github.com/manticoresoftware/manticoresearch-buddy"
-  url "https://github.com/manticoresoftware/manticoresearch-buddy.git", branch: "main", revision: "4557b62a6e272c999286047f31b61a1101f24906"
-  version "1.0.1-2023042014-4557b62"
   license "GPL-2.0"
 
-  depends_on "composer" => :build
-  depends_on "php" => :build
+  arch = Hardware::CPU.arch
+  base_url = 'https://repo.manticoresearch.com/repository/manticoresearch_macos/dev/'
+  fetched_info = ManticoreHelper.fetch_version_and_url(
+    'manticore-buddy',
+    base_url,
+    /(manticore-buddy_)(\d+\.\d+\.\d+_)(\d+\.)([\w]+)(\.tar\.gz)/
+  )
+
+  version fetched_info[:version]
+  url fetched_info[:file_url]
+  sha256 fetched_info[:sha256]
+
   depends_on "curl"
 
   def install
-    build_dir = `pwd`.strip + "/build"
-    system "git", "clone", "https://github.com/manticoresoftware/phar_builder.git"
-    system "./phar_builder/bin/build", "--name=\"Manticore Buddy\"", "--package=manticore-buddy", "--index=src/main.php"
-    (share/"manticore/modules/manticore-buddy/bin/").mkpath
-    share.install "#{build_dir}/manticore-buddy" => "manticore/modules/manticore-buddy/bin/manticore-buddy"
-    Dir["#{build_dir}/share/modules/manticore-buddy/*"].each do |file|
-      file_name = File.basename(file)
-      share.install file => "manticore/modules/manticore-buddy/#{file_name}"
-    end
+    (share/"manticore").mkpath
+    share.install "share/modules" => "manticore/modules"
+    bin.install "bin/manticore-buddy" => "manticore-buddy"
   end
 
   test do
-    dir = share
-    File.file? "#{dir}/manticore/modules/manticore-buddy/bin/manticore-buddy"
+    File.file? "#{share}/manticore/modules/manticore-buddy/src/main.php"
+    File.file? "#{bin}/manticore-buddy"
   end
 end

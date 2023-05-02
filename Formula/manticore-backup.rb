@@ -1,21 +1,32 @@
+require_relative 'manticore_helper'
+require 'hardware'
+require "fileutils"
+
 class ManticoreBackup < Formula
   desc "Manticore Search backup tool"
   homepage "https://github.com/manticoresoftware/manticoresearch-backup"
-  url "https://github.com/manticoresoftware/manticoresearch-backup.git", branch: "main", revision: "cde50086e0b80eb5b997c704eb59228af42f12d5"
-  version "0.5.2-2023041808-cde5008"
   license "GPL-2.0"
 
-  depends_on "composer" => :build
-  depends_on "php" => :build
+  arch = Hardware::CPU.arch
+  base_url = 'https://repo.manticoresearch.com/repository/manticoresearch_macos/dev/'
+  fetched_info = ManticoreHelper.fetch_version_and_url(
+    'manticore-backup',
+    base_url,
+    /(manticore-backup_)(\d+\.\d+\.\d+\-)(\d+\-)([\w]+)(\.tar\.gz)/
+  )
+
+  version fetched_info[:version]
+  url fetched_info[:file_url]
+  sha256 fetched_info[:sha256]
 
   def install
-    build_dir = `pwd`.strip + "/build"
-    system "git", "clone", "https://github.com/manticoresoftware/phar_builder.git"
-    system "./phar_builder/bin/build", "--name=\"Manticore Backup\"", "--package=manticore-backup", "--index=src/main.php"
-    bin.install "#{build_dir}/manticore-backup" => "manticore-backup"
+    (share/"manticore").mkpath
+    share.install "share/modules" => "manticore/modules"
+    bin.install "bin/manticore-backup" => "manticore-backup"
   end
 
   test do
+    File.file? "#{share}/manticore/modules/manticore-backup/src/main.php"
     File.file? "#{bin}/manticore-backup"
   end
 end
