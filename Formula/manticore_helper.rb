@@ -22,13 +22,26 @@ module ManticoreHelper
 
     puts "Content fetched from the URL:\n#{content[0..500]}..."
 
+    # Let's check if the pattern is correct and can be used for scanning
+    puts "Using pattern: #{pattern}"
+
     versions = []
 
     content.scan(pattern) do |match|
+      # Output each match to see if we're actually matching anything
+      puts "Matched: #{match.inspect}"
+
       semver = match[1]
       separator = match[2]
       date = match[3]
       hash_id = match[4]
+
+      # Check each component to see if they're extracted correctly
+      puts "semver: #{semver}"
+      puts "separator: #{separator}"
+      puts "date: #{date}"
+      puts "hash_id: #{hash_id}"
+
       versions << { semver: Gem::Version.new(semver), separator: separator, date: date, hash_id: hash_id, file: "#{match[0]}#{semver}#{separator}#{date}#{hash_id}#{match[5]}" }
     end
 
