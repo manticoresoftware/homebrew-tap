@@ -15,8 +15,8 @@ class ManticoreExtra < Formula
   )
   version "#{highest_version}"
 
-  depends_on "manticoresoftware/tap/manticore-columnar-lib"
-  depends_on "manticoresoftware/tap/manticore-executor"
+  depends_on "sanikolaev/tap/manticore-columnar-lib"
+  depends_on "sanikolaev/tap/manticore-executor"
 
   def install
     File.open("manticore-extra", "w") do |file|
