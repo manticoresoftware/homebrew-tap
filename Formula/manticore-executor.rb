@@ -7,7 +7,8 @@ class ManticoreExecutor < Formula
   homepage "https://github.com/manticoresoftware/executor"
   license "GPL-2.0"
 
-  arch = Hardware::CPU.arch
+  original_arch = Hardware::CPU.arch
+  arch = (original_arch == "x86_64") ? "(x86_64|amd64)" : original_arch
   base_url = 'https://repo.manticoresearch.com/repository/manticoresearch_macos/release/'
   fetched_info = ManticoreHelper.fetch_version_and_url(
     'manticore-executor',
