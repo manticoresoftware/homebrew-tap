@@ -20,7 +20,7 @@ module ManticoreHelper
 
     content = URI.open(base_url).read
 
-    puts "Content fetched from the URL:\n#{content[0..500]}..."  # Debug: Print the first 500 characters of the fetched content for a quick look
+    puts "Content fetched from the URL:\n#{content[0..500]}..."
 
     versions = []
 
