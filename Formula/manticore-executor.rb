@@ -8,28 +8,10 @@ class ManticoreExecutor < Formula
   license "GPL-2.0"
 
   arch = Hardware::CPU.arch
-  puts "original arch: _#{arch}_"
-
-  for i in 0...(arch.length)
-    print "#{arch[i].ord} "
-  end
-  puts
-
-  test = "x86_64"
-  for i in 0...(test.length)
-    print "#{test[i].ord} "
-  end
-  puts
-
-  p arch
-  p test
-
-#  if arch == "x86_64"
   if arch.to_s == "x86_64"
-    puts "x86_64 detected"
     arch = "(x86_64|amd64)"
   end
-  puts "arch: #{arch}"
+
   base_url = 'https://repo.manticoresearch.com/repository/manticoresearch_macos/release/'
   fetched_info = ManticoreHelper.fetch_version_and_url(
     'manticore-executor',
