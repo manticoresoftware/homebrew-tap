@@ -21,6 +21,9 @@ class ManticoreExecutor < Formula
   end
   puts
 
+  p arch
+  p test
+
 #  if arch == "x86_64"
   if arch == test
     puts "x86_64 detected"
