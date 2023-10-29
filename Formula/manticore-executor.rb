@@ -1,6 +1,7 @@
 require_relative 'manticore_helper'
 require 'hardware'
 require "fileutils"
+require 'jcode'
 
 class ManticoreExecutor < Formula
   desc "Custom built PHP to run misc scripts of Manticore"
