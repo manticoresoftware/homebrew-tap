@@ -25,7 +25,7 @@ class ManticoreExecutor < Formula
   p test
 
 #  if arch == "x86_64"
-  if arch == test
+  if arch.to_s == "x86_64"
     puts "x86_64 detected"
     arch = "(x86_64|amd64)"
   end
