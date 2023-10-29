@@ -15,6 +15,13 @@ class ManticoreExecutor < Formula
   end
   puts
 
+  arch = "x86_64"
+  for i in 0...(arch.length)
+    print "#{arch[i].ord} "
+  end
+  puts
+
+
   if arch == "x86_64"
     puts "x86_64 detected"
     arch = "(x86_64|amd64)"
