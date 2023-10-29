@@ -24,7 +24,7 @@ class ManticoreExecutor < Formula
   sha256 fetched_info[:sha256]
 
   depends_on "openssl"
-#  depends_on "zstd"
+  depends_on "zstd"
 
   def install
     bin.install "manticore-executor" => "manticore-executor"
