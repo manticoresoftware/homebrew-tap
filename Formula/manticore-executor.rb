@@ -9,6 +9,12 @@ class ManticoreExecutor < Formula
 
   arch = Hardware::CPU.arch
   puts "original arch: _#{arch}_"
+
+  for i in 0...(arch.length)
+    print "#{arch[i].ord} "
+  end
+  puts
+
   if arch == "x86_64"
     puts "x86_64 detected"
     arch = "(x86_64|amd64)"
