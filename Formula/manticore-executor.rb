@@ -1,7 +1,6 @@
 require_relative 'manticore_helper'
 require 'hardware'
 require "fileutils"
-require 'jcode'
 
 class ManticoreExecutor < Formula
   desc "Custom built PHP to run misc scripts of Manticore"
@@ -9,9 +8,7 @@ class ManticoreExecutor < Formula
   license "GPL-2.0"
 
   arch = Hardware::CPU.arch
-  arch.each_char { |c| print "#{c.ord} " }
-  puts
-  puts "original arch: #{arch}"
+  puts "original arch: _#{arch}_"
   if arch == "x86_64"
     puts "x86_64 detected"
     arch = "(x86_64|amd64)"
