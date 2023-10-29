@@ -10,6 +10,7 @@ class ManticoreExecutor < Formula
   arch = Hardware::CPU.arch
   puts "original arch: #{arch}"
   if arch == "x86_64"
+    puts "x86_64 detected"
     arch = "(x86_64|amd64)"
   end
   puts "arch: #{arch}"
