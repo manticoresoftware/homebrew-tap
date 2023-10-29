@@ -15,9 +15,9 @@ class ManticoreExecutor < Formula
   end
   puts
 
-  arch = "x86_64"
-  for i in 0...(arch.length)
-    print "#{arch[i].ord} "
+  test = "x86_64"
+  for i in 0...(test.length)
+    print "#{test[i].ord} "
   end
   puts
 
