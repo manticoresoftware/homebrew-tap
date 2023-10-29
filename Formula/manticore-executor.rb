@@ -8,7 +8,8 @@ class ManticoreExecutor < Formula
   license "GPL-2.0"
 
   arch = Hardware::CPU.arch
-  arch.each_byte { |b| print "#{b} " }
+  arch.each_char { |c| print "#{c.ord} " }
+  puts
   puts "original arch: #{arch}"
   if arch == "x86_64"
     puts "x86_64 detected"
