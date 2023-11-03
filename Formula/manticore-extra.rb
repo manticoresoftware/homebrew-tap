@@ -9,7 +9,8 @@ class ManticoreExtra < Formula
   puts "url file://" + File.expand_path(__FILE__)
   sha256 Digest::SHA256.file(File.expand_path(__FILE__)).hexdigest
   puts "sha256 " + Digest::SHA256.file(File.expand_path(__FILE__)).hexdigest
-  url_sha256 = Digest::SHA256.hexdigest(File.expand_path(__FILE__))
+  url_sha256 = Digest::SHA256.file(File.expand_path(__FILE__)).hexdigest
+  puts "sha256 #{url_sha256}"
   FileUtils.rm(Dir.glob(HOMEBREW_CACHE/"downloads/#{url_sha256}--*"))
 
   # we take version of "executor"
