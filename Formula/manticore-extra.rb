@@ -5,7 +5,9 @@ class ManticoreExtra < Formula
   desc "Manticore meta package to install manticore-executor and manticore-columnar-lib dependencies"
   homepage "https://manticoresearch.com"
   url "file://" + File.expand_path(__FILE__)
+  puts "url #{url}"
   sha256 Digest::SHA256.file(File.expand_path(__FILE__)).hexdigest
+  puts "sha256 #{sha256}"
 
   # we take version of "executor"
   arch = Hardware::CPU.arch
