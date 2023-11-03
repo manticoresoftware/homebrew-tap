@@ -1,6 +1,4 @@
-require "digest"
 require 'hardware'
-require 'fileutils'
 
 class ManticoreExtra < Formula
   desc "Manticore meta package to install manticore-executor and manticore-columnar-lib dependencies"
