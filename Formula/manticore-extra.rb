@@ -5,15 +5,17 @@ require 'fileutils'
 class ManticoreExtra < Formula
   desc "Manticore meta package to install manticore-executor and manticore-columnar-lib dependencies"
   homepage "https://manticoresearch.com"
-  url "file://" + File.expand_path(__FILE__)
-  puts "url file://" + File.expand_path(__FILE__)
-  sha256 Digest::SHA256.file(File.expand_path(__FILE__)).hexdigest
-  puts "sha256 " + Digest::SHA256.file(File.expand_path(__FILE__)).hexdigest
-  url_sha256 = Digest::SHA256.file(File.expand_path(__FILE__)).hexdigest
-  puts "sha256 #{url_sha256}"
-  FileUtils.rm(Dir.glob(HOMEBREW_CACHE/"downloads/#{url_sha256}--*"))
-  puts "rm " + Dir.glob(HOMEBREW_CACHE/"downloads/#{url_sha256}--*").first
-
+#  url "file://" + File.expand_path(__FILE__)
+#  puts "url file://" + File.expand_path(__FILE__)
+#  sha256 Digest::SHA256.file(File.expand_path(__FILE__)).hexdigest
+#  puts "sha256 " + Digest::SHA256.file(File.expand_path(__FILE__)).hexdigest
+#  url_sha256 = Digest::SHA256.file(File.expand_path(__FILE__)).hexdigest
+#  puts "sha256 #{url_sha256}"
+#  FileUtils.rm(Dir.glob(HOMEBREW_CACHE/"downloads/#{url_sha256}--*"))
+#  puts "rm " + Dir.glob(HOMEBREW_CACHE/"downloads/#{url_sha256}--*")
+  url "https://repo.manticoresearch.com/repository/manticoresearch_macos/release/manticore-extra.tgz"
+  sha256 "123"
+  
   # we take version of "executor"
   arch = Hardware::CPU.arch
   if arch.to_s == "x86_64" || arch.to_s == "amd64"
