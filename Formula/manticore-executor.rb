@@ -1,4 +1,3 @@
-require_relative 'manticore_helper'
 require 'hardware'
 require "fileutils"
 
