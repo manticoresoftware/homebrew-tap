@@ -8,7 +8,7 @@ class Manticoresearch < Formula
   arch = Hardware::CPU.arch
   url "https://repo.manticoresearch.com/repository/manticoresearch_macos/release/manticore-6.2.12-230822-dc5144d35-osx11.6-#{arch}-main.tar.gz"
   version "6.2.12-230822-dc5144d35"
-  sha256 "123"
+  sha256 "826e7a486835bfc97dc5c8d7c4bd2afa582141cd64f68cc4f18b43924c2f9e22"
 
   depends_on "libpq"
   depends_on "mysql-client"
