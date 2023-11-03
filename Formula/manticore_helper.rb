@@ -19,7 +19,9 @@ module ManticoreHelper
     puts "Attempting to open URL: #{base_url}"
 
     # Calculate MD5 hash for the base_url
-    md5_filename = Digest::MD5.hexdigest(base_url) + ".md5"
+    tmpdir = Dir.mktmpdir
+    md5_filename = "#{tmpdir}/" + Digest::MD5.hexdigest(base_url) + ".md5"
+    puts "md5_filename: #{md5_filename}"
 
     # Check if the file exists in the current directory and read from it if it does
     if File.exist?(md5_filename)

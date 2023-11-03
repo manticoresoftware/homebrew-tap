@@ -7,18 +7,18 @@ class ManticoreExtra < Formula
   url "file://" + File.expand_path(__FILE__)
   sha256 Digest::SHA256.file(File.expand_path(__FILE__)).hexdigest
 
+  base_url = 'https://repo.manticoresearch.com/repository/manticoresearch_macos/release/'
+  highest_version, highest_version_url = ManticoreHelper.find_version_and_url(
+    'manticore-executor',
+    base_url,
+    /(manticore-executor_)(\d+\.\d+\.\d+)(\-)(\d+\-)([\w]+)(_macos_amd64\.tar\.gz)/
+  )
+  version "#{highest_version}"
+
   depends_on "sanikolaev/tap/manticore-columnar-lib"
   depends_on "sanikolaev/tap/manticore-executor"
 
   def install
-    base_url = 'https://repo.manticoresearch.com/repository/manticoresearch_macos/release/'
-    highest_version, highest_version_url = ManticoreHelper.find_version_and_url(
-      'manticore-executor',
-      base_url,
-      /(manticore-executor_)(\d+\.\d+\.\d+)(\-)(\d+\-)([\w]+)(_macos_amd64\.tar\.gz)/
-    )
-    version "#{highest_version}"
-
     File.open("manticore-extra", "w") do |file|
       file.write "#!/bin/sh\n"
       deps.each do |dep|

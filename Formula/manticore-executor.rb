@@ -7,26 +7,26 @@ class ManticoreExecutor < Formula
   homepage "https://github.com/manticoresoftware/executor"
   license "GPL-2.0"
 
+  arch = Hardware::CPU.arch
+  if arch.to_s == "x86_64"
+    arch = "(x86_64|amd64)"
+  end
+
+  base_url = 'https://repo.manticoresearch.com/repository/manticoresearch_macos/release/'
+  fetched_info = ManticoreHelper.fetch_version_and_url(
+    'manticore-executor',
+    base_url,
+    /(manticore-executor_)(\d+\.\d+\.\d+)(\-)(\d+\-)([\w]+)(_macos_#{arch}\.tar\.gz)/
+  )
+
+  version fetched_info[:version]
+  url fetched_info[:file_url]
+  sha256 fetched_info[:sha256]
+
   depends_on "openssl"
   depends_on "zstd"
 
   def install
-    arch = Hardware::CPU.arch
-    if arch.to_s == "x86_64"
-      arch = "(x86_64|amd64)"
-    end
-
-    base_url = 'https://repo.manticoresearch.com/repository/manticoresearch_macos/release/'
-    fetched_info = ManticoreHelper.fetch_version_and_url(
-      'manticore-executor',
-      base_url,
-      /(manticore-executor_)(\d+\.\d+\.\d+)(\-)(\d+\-)([\w]+)(_macos_#{arch}\.tar\.gz)/
-    )
-
-    version fetched_info[:version]
-    url fetched_info[:file_url]
-    sha256 fetched_info[:sha256]
-
     bin.install "manticore-executor" => "manticore-executor"
   end
 

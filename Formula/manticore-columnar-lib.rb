@@ -1,4 +1,3 @@
-require_relative 'manticore_helper'
 require 'hardware'
 
 class ManticoreColumnarLib < Formula
@@ -6,19 +5,12 @@ class ManticoreColumnarLib < Formula
   homepage "https://github.com/manticoresoftware/columnar/"
   license "Apache-2.0"
 
+  arch = Hardware::CPU.arch
+  version "2.2.4-230822-5aec342"
+  url "https://repo.manticoresearch.com/repository/manticoresearch_macos/release/manticore-columnar-lib-#{version}-osx11.6-#{arch}.tar.gz"
+  sha256 "c26c557b1359cd79862ead962b33f3910e7bca4d85344c99fa58ae34d1947dbb"
+
   def install
-    arch = Hardware::CPU.arch
-    base_url = 'https://repo.manticoresearch.com/repository/manticoresearch_macos/release/'
-    fetched_info = ManticoreHelper.fetch_version_and_url(
-      'manticore-columnar-lib',
-      base_url,
-      /(manticore-columnar-lib-)(\d+\.\d+\.\d+)(\-)(\d+-)([\w]+)(-osx11\.6-#{arch}\.tar\.gz)/
-    )
-
-    version fetched_info[:version]
-    url fetched_info[:file_url]
-    sha256 fetched_info[:sha256]
-
     (share/"manticore/modules").mkpath
     share.install "usr/local/share/manticore/modules/lib_manticore_columnar.so" => "manticore/modules/lib_manticore_columnar.so"
     share.install "usr/local/share/manticore/modules/lib_manticore_secondary.so" => "manticore/modules/lib_manticore_secondary.so"

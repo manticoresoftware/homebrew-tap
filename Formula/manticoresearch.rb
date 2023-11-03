@@ -1,10 +1,14 @@
-require_relative 'manticore_helper'
 require 'hardware'
 
 class Manticoresearch < Formula
   desc "Open source database for search"
   homepage "https://manticoresearch.com"
   license "GPL-2.0"
+
+  arch = Hardware::CPU.arch
+  url "https://repo.manticoresearch.com/repository/manticoresearch_macos/release/manticore-6.2.12-230822-dc5144d35-osx11.6-#{arch}-main.tar.gz"
+  version "6.2.12-230822-dc5144d35"
+  sha256 "123"
 
   depends_on "libpq"
   depends_on "mysql-client"
@@ -18,18 +22,6 @@ class Manticoresearch < Formula
   conflicts_with "sphinx", because: "Manticore Search is a fork of Sphinxsearch"
 
   def install
-    arch = Hardware::CPU.arch
-    base_url = 'https://repo.manticoresearch.com/repository/manticoresearch_macos/release/'
-    fetched_info = ManticoreHelper.fetch_version_and_url(
-      'manticoresearch',
-      base_url,
-      /(manticore-)(\d+\.\d+\.\d+)(\-)(\d+-)([\w]+)(-osx11\.6-#{arch}-main\.tar\.gz)/
-    )
-
-    version fetched_info[:version]
-    url fetched_info[:file_url]
-    sha256 fetched_info[:sha256]
-
     bin.install Dir["bin/*"]
     man1.install Dir["share/doc/manticore/doc/*.1"]
     share.install "share/manticore"
