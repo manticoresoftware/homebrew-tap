@@ -16,22 +16,9 @@ module ManticoreHelper
   end
 
   def self.find_version_and_url(formula_name, base_url, pattern)
-    puts "Attempting to open URL: #{base_url}"
+#    puts "Attempting to open URL: #{base_url}"
 
-    # Calculate MD5 hash for the base_url
-    tmpdir = Dir.mktmpdir
-    md5_filename = "#{tmpdir}/" + Digest::MD5.hexdigest(base_url) + ".md5"
-    puts "md5_filename: #{md5_filename}"
-
-    # Check if the file exists in the current directory and read from it if it does
-    if File.exist?(md5_filename)
-      content = File.read(md5_filename)
-    else
-      content = URI.open(base_url).read
-      # Save the content locally for future reference
-      File.write(md5_filename, content)
-    end
-
+    content = URI.open(base_url).read
     versions = []
 
     content.scan(pattern) do |match|
@@ -43,7 +30,7 @@ module ManticoreHelper
       versions << { semver: Gem::Version.new(semver), separator: separator, date: date, hash_id: hash_id, file: "#{match[0]}#{semver}#{separator}#{date}#{hash_id}#{match[5]}" }
     end
 
-    puts "Found versions: #{versions}"
+#    puts "Found versions: #{versions}"
 
     if versions.empty?
       raise "Could not find versions by using provided URL and pattern"
@@ -54,8 +41,8 @@ module ManticoreHelper
     highest_version = "#{versions.first[:semver]}#{versions.first[:separator]}#{versions.first[:date]}#{versions.first[:hash_id]}"
     highest_version_url = base_url + versions.first[:file]
 
-    puts "Highest version detected: #{highest_version}"
-    puts "URL for the highest version: #{highest_version_url}"
+#    puts "Highest version detected: #{highest_version}"
+#    puts "URL for the highest version: #{highest_version_url}"
 
     if highest_version.nil? || highest_version_url.nil?
       raise "Could not find version or URL for '#{formula_name}' with the given pattern: #{pattern}"
