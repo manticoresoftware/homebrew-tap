@@ -3,6 +3,7 @@ require 'hardware'
 class ManticoreExtra < Formula
   desc "Manticore meta package to install manticore-executor and manticore-columnar-lib dependencies"
   homepage "https://manticoresearch.com"
+  # manticore-extra.tgz is an archive with just one file README, just to comply with Homebrew's requirements
   url "https://repo.manticoresearch.com/repository/manticoresearch_macos/release/manticore-extra.tgz"
   sha256 "9fac38c1048f578b945b11f9c83347665f7c863fdbf15583365231ec459a51c4"
 
