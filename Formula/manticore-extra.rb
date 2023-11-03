@@ -1,4 +1,5 @@
 require "digest"
+require 'hardware'
 
 class ManticoreExtra < Formula
   desc "Manticore meta package to install manticore-executor and manticore-columnar-lib dependencies"
@@ -7,6 +8,7 @@ class ManticoreExtra < Formula
   sha256 Digest::SHA256.file(File.expand_path(__FILE__)).hexdigest
 
   # we take version of "executor"
+  arch = Hardware::CPU.arch
   if arch.to_s == "x86_64" || arch.to_s == "amd64"
     version "0.7.8-230822-810d7d3"
   else
