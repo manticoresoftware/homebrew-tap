@@ -1,5 +1,4 @@
 require "digest"
-require_relative 'manticore_helper'
 
 class ManticoreExtra < Formula
   desc "Manticore meta package to install manticore-executor and manticore-columnar-lib dependencies"
@@ -7,13 +6,12 @@ class ManticoreExtra < Formula
   url "file://" + File.expand_path(__FILE__)
   sha256 Digest::SHA256.file(File.expand_path(__FILE__)).hexdigest
 
-  base_url = 'https://repo.manticoresearch.com/repository/manticoresearch_macos/release/'
-  highest_version, highest_version_url = ManticoreHelper.find_version_and_url(
-    'manticore-executor',
-    base_url,
-    /(manticore-executor_)(\d+\.\d+\.\d+)(\-)(\d+\-)([\w]+)(_macos_amd64\.tar\.gz)/
-  )
-  version "#{highest_version}"
+  # we take version of "executor"
+  if arch.to_s == "x86_64" || arch.to_s == "amd64"
+    version "0.7.8-230822-810d7d3"
+  else
+    version "0.7.6-230804-8f5cfa5"
+  end
 
   depends_on "sanikolaev/tap/manticore-columnar-lib"
   depends_on "sanikolaev/tap/manticore-executor"

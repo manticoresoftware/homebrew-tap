@@ -1,18 +1,11 @@
-require_relative 'manticore_helper'
-
 class ManticoreIcudata < Formula
   desc "Chinese segmentation data file for Manticore Search"
   homepage "https://unicode-org.github.io/icu/userguide/icu_data/"
   version "65l"
   license "UNICODE, INC. LICENSE"
 
-  filepath, sha256 = ManticoreHelper.download_file(
-    'manticore-icudata',
-    'https://repo.manticoresearch.com/repository/manticoresearch_macos/release/manticore-icudata-65l.tar.gz'
-  )
-
-  url "file://#{filepath}"
-  sha256 sha256
+  url "https://repo.manticoresearch.com/repository/manticoresearch_macos/release/manticore-icudata-65l.tar.gz"
+  sha256 "b9eb19f8b6f496b115ac9e944224b464ac1aebd095fef1063e89aaf7437bbee3"
 
   def install
     (share/"manticore/icu").mkpath

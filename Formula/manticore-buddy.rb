@@ -1,5 +1,3 @@
-require_relative 'manticore_helper'
-require 'hardware'
 require "fileutils"
 
 class ManticoreBuddy < Formula
@@ -7,17 +5,9 @@ class ManticoreBuddy < Formula
   homepage "https://github.com/manticoresoftware/manticoresearch-buddy"
   license "GPL-2.0"
 
-  arch = Hardware::CPU.arch
-  base_url = 'https://repo.manticoresearch.com/repository/manticoresearch_macos/release/'
-  fetched_info = ManticoreHelper.fetch_version_and_url(
-    'manticore-buddy',
-    base_url,
-    /(manticore-buddy_)(\d+\.\d+\.\d+)(_)(\d+\.)([\w]+)(\.tar\.gz)/
-  )
-
-  version fetched_info[:version]
-  url fetched_info[:file_url]
-  sha256 fetched_info[:sha256]
+  version "1.0.18_23080408.2befdbe"
+  url "https://repo.manticoresearch.com/repository/manticoresearch_macos/release/manticore-buddy_#{version}.tar.gz"
+  sha256 "40f3d5bab5806f87102cf5ec17ccae00c63d49484c9b2f217d4b383aea9895a6"
 
   depends_on "curl"
 

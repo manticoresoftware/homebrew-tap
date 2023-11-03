@@ -8,20 +8,16 @@ class ManticoreExecutor < Formula
   license "GPL-2.0"
 
   arch = Hardware::CPU.arch
-  if arch.to_s == "x86_64"
-    arch = "(x86_64|amd64)"
+
+  if arch.to_s == "x86_64" || arch.to_s == "amd64"
+    version "0.7.8-230822-810d7d3"
+    url "https://repo.manticoresearch.com/repository/manticoresearch_macos/release/manticore-executor_#{version}_macos_amd64.tar.gz"
+    sha256 "unknown"
+  else
+    version "0.7.6-230804-8f5cfa5"
+    url "https://repo.manticoresearch.com/repository/manticoresearch_macos/release/manticore-executor_#{version}_macos_arm64.tar.gz"
+    sha256 "8969d93e933ee73c26dc56e832a3b0b621349b68b7f906a55a454544dd37d641"
   end
-
-  base_url = 'https://repo.manticoresearch.com/repository/manticoresearch_macos/release/'
-  fetched_info = ManticoreHelper.fetch_version_and_url(
-    'manticore-executor',
-    base_url,
-    /(manticore-executor_)(\d+\.\d+\.\d+)(\-)(\d+\-)([\w]+)(_macos_#{arch}\.tar\.gz)/
-  )
-
-  version fetched_info[:version]
-  url fetched_info[:file_url]
-  sha256 fetched_info[:sha256]
 
   depends_on "openssl"
   depends_on "zstd"
