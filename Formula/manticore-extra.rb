@@ -14,7 +14,7 @@ class ManticoreExtra < Formula
 #  FileUtils.rm(Dir.glob(HOMEBREW_CACHE/"downloads/#{url_sha256}--*"))
 #  puts "rm " + Dir.glob(HOMEBREW_CACHE/"downloads/#{url_sha256}--*")
   url "https://repo.manticoresearch.com/repository/manticoresearch_macos/release/manticore-extra.tgz"
-  sha256 "78a088858ab2e139a731fc17ff3786b1323df145d023bf4e318bf29d7ce37679"
+  sha256 "9fac38c1048f578b945b11f9c83347665f7c863fdbf15583365231ec459a51c4"
 
   # we take version of "executor"
   arch = Hardware::CPU.arch
