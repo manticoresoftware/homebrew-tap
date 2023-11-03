@@ -18,7 +18,18 @@ module ManticoreHelper
   def self.find_version_and_url(formula_name, base_url, pattern)
     puts "Attempting to open URL: #{base_url}"
 
-    content = URI.open(base_url).read
+    # Calculate MD5 hash for the base_url
+    md5_filename = Digest::MD5.hexdigest(base_url) + ".md5"
+
+    # Check if the file exists in the current directory and read from it if it does
+    if File.exist?(md5_filename)
+      content = File.read(md5_filename)
+    else
+      content = URI.open(base_url).read
+      # Save the content locally for future reference
+      File.write(md5_filename, content)
+    end
+
     versions = []
 
     content.scan(pattern) do |match|

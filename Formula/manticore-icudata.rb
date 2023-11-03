@@ -6,15 +6,15 @@ class ManticoreIcudata < Formula
   version "65l"
   license "UNICODE, INC. LICENSE"
 
-  filepath, sha256 = ManticoreHelper.download_file(
-    'manticore-icudata',
-    'https://repo.manticoresearch.com/repository/manticoresearch_macos/release/manticore-icudata-65l.tar.gz'
-  )
-
-  url "file://#{filepath}"
-  sha256 sha256
-
   def install
+    filepath, sha256 = ManticoreHelper.download_file(
+      'manticore-icudata',
+      'https://repo.manticoresearch.com/repository/manticoresearch_macos/release/manticore-icudata-65l.tar.gz'
+    )
+
+    url "file://#{filepath}"
+    sha256 sha256
+
     (share/"manticore/icu").mkpath
     share.install "manticore/icu/icudt65l.dat" => "manticore/icu/icudt65l.dat"
   end

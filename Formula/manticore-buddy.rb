@@ -7,21 +7,21 @@ class ManticoreBuddy < Formula
   homepage "https://github.com/manticoresoftware/manticoresearch-buddy"
   license "GPL-2.0"
 
-  arch = Hardware::CPU.arch
-  base_url = 'https://repo.manticoresearch.com/repository/manticoresearch_macos/release/'
-  fetched_info = ManticoreHelper.fetch_version_and_url(
-    'manticore-buddy',
-    base_url,
-    /(manticore-buddy_)(\d+\.\d+\.\d+)(_)(\d+\.)([\w]+)(\.tar\.gz)/
-  )
-
-  version fetched_info[:version]
-  url fetched_info[:file_url]
-  sha256 fetched_info[:sha256]
-
   depends_on "curl"
 
   def install
+    arch = Hardware::CPU.arch
+    base_url = 'https://repo.manticoresearch.com/repository/manticoresearch_macos/release/'
+    fetched_info = ManticoreHelper.fetch_version_and_url(
+      'manticore-buddy',
+      base_url,
+      /(manticore-buddy_)(\d+\.\d+\.\d+)(_)(\d+\.)([\w]+)(\.tar\.gz)/
+    )
+
+    version fetched_info[:version]
+    url fetched_info[:file_url]
+    sha256 fetched_info[:sha256]
+
     (share/"manticore").mkpath
     (share/"manticore/modules").mkpath
     (lib/"manticore").mkpath
