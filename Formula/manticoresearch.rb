@@ -3,16 +3,16 @@ require 'hardware'
 class Manticoresearch < Formula
   desc "Open source database for search"
   homepage "https://manticoresearch.com"
-  license "GPL-2.0"
+  license "GPL-3.0"
 
   arch = Hardware::CPU.arch
-  url "https://repo.manticoresearch.com/repository/manticoresearch_macos/release/manticore-6.2.12-230822-dc5144d35-osx11.6-#{arch}-main.tar.gz"
-  version "6.2.12-230822-dc5144d35"
-  
+  url "https://repo.manticoresearch.com/repository/manticoresearch_macos/release/manticore-6.3.0-24052209-1811a9efb-osx11.6-#{arch}-main.tar.gz"
+  version "6.3.0-24052209-1811a9efb"
+
   if arch.to_s == "x86_64" || arch.to_s == "amd64"
-    sha256 "2ef10a29a440d2d792eef5295f3c681ff2bd85106c278733db615629819a8bc6"
+    sha256 "ffda0d208b3f8dd0a5c17490b20af2ac5f561f97a84cd2dea4f63cf99508239a"
   else
-    sha256 "826e7a486835bfc97dc5c8d7c4bd2afa582141cd64f68cc4f18b43924c2f9e22"
+    sha256 "e0714800b8f6547049ca3adf0502d5f3f2d0376e7ad536d778bf157b373f495d"
   end
 
   depends_on "libpq"
@@ -29,6 +29,7 @@ class Manticoresearch < Formula
   def install
     bin.install Dir["bin/*"]
     man1.install Dir["share/doc/manticore/doc/*.1"]
+    ln_s "/usr/share/zoneinfo", "share/manticore/tzdata"
     share.install "share/manticore"
     include.install "include/manticore"
     etc.install "etc/manticoresearch"

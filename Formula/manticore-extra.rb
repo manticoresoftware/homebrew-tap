@@ -10,13 +10,14 @@ class ManticoreExtra < Formula
   # we take version of "executor"
   arch = Hardware::CPU.arch
   if arch.to_s == "x86_64" || arch.to_s == "amd64"
-    version "0.7.8-230822-810d7d3"
+    version "1.1.6-24052206-c55bc2b"
   else
-    version "0.7.6-230804-8f5cfa5"
+    version "1.1.6-24052206-c55bc2b"
   end
 
   depends_on "manticoresoftware/tap/manticore-columnar-lib"
   depends_on "manticoresoftware/tap/manticore-executor"
+  depends_on "manticoresoftware/tap/manticore-galera"
 
   def install
     File.open("manticore-extra", "w") do |file|
