@@ -10,7 +10,7 @@ class Manticoresearch < Formula
   version "6.3.2-24062606-c296dc7c8"
 
   if arch.to_s == "x86_64" || arch.to_s == "amd64"
-    sha256 "ffda0d208b3f8dd0a5c17490b20af2ac5f561f97a84cd2dea4f63cf99508239a"
+    sha256 "e940f06b9f69896dca5aa4f7043eaa300557456b0606d2d368a264ee23fdf1b6"
   else
     sha256 "5db9bd7d3625332043b646f9008085d2e07b0f11e8f2777ef6fdf45993484bf7"
   end
