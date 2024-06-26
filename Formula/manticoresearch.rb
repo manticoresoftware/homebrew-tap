@@ -6,13 +6,13 @@ class Manticoresearch < Formula
   license "GPL-3.0"
 
   arch = Hardware::CPU.arch
-  url "https://repo.manticoresearch.com/repository/manticoresearch_macos/release/manticore-6.3.0-24052209-1811a9efb-osx11.6-#{arch}-main.tar.gz"
-  version "6.3.0-24052209-1811a9efb"
+  url "https://repo.manticoresearch.com/repository/manticoresearch_macos/release/manticore-6.3.2-24062606-c296dc7c8-osx11.6-#{arch}-main.tar.gz"
+  version "6.3.2-24062606-c296dc7c8"
 
   if arch.to_s == "x86_64" || arch.to_s == "amd64"
     sha256 "ffda0d208b3f8dd0a5c17490b20af2ac5f561f97a84cd2dea4f63cf99508239a"
   else
-    sha256 "e0714800b8f6547049ca3adf0502d5f3f2d0376e7ad536d778bf157b373f495d"
+    sha256 "5db9bd7d3625332043b646f9008085d2e07b0f11e8f2777ef6fdf45993484bf7"
   end
 
   depends_on "libpq"
