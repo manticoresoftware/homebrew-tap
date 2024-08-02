@@ -12,7 +12,7 @@ class Manticoresearch < Formula
   if arch.to_s == "x86_64" || arch.to_s == "amd64"
     sha256 "f9baa4bc8953ada20d485a235d514fcee8b8b1cfebca38be61787a6a9cef9ec7"
   else
-    sha256 "bbd4baaf856bc16c169f4a299fa5d5dd357c7b0e6619077da412e839f14bce88"
+    sha256 "d03d9bc962a24b7ae64c17e33cc1c4d1e2130d18486cce0e4fbbdd0db0aaa1f2"
   end
 
   depends_on "libpq"
