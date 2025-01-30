@@ -5,9 +5,9 @@ class ManticoreBackup < Formula
   homepage "https://github.com/manticoresoftware/manticoresearch-backup"
   license "GPL-3.0"
 
-  version "1.3.8-24052208-57fc406"
+  version "1.7.4+25012416-be8f7625"
   url "https://repo.manticoresearch.com/repository/manticoresearch_macos/release/manticore-backup_#{version}.tar.gz"
-  sha256 "5ea04229f2b3e261780e812fd0e493c5b938fc421e284806eb1419821b0318e5"
+  sha256 "4e349927641c43e52514ffb0912564b8ed78b1fa7620ba4ead6991fb0e1ba699"
 
   def install
     (share/"manticore").mkpath

@@ -6,18 +6,17 @@ class Manticoresearch < Formula
   license "GPL-3.0"
 
   arch = Hardware::CPU.arch
-  url "https://repo.manticoresearch.com/repository/manticoresearch_macos/release/manticore-6.3.8-24112202-d17bd2b6b-osx11.6-#{arch}-main.tar.gz"
-  version "6.3.8-24112202-d17bd2b6b"
+  url "https://repo.manticoresearch.com/repository/manticoresearch_macos/release/manticore-7.0.0-25013002-92c650401-osx11.6-#{arch}-main.tar.gz"
+  version "7.0.0-25013002-92c650401"
 
   if arch.to_s == "x86_64" || arch.to_s == "amd64"
-    sha256 "10c35f55b457dcf389ba39ee370e17c27d57c31f7eeb541c280b4e012d6ecc32"
+    sha256 "274abf3221999ccd479ed02b6950ef411c72b00ede5a21f0c8839abfd6f40b03"
   else
-    sha256 "3573f6b5c41d7fd8785db087120746bc30ea18b6de2bb853e6f4e4024cab1915"
+    sha256 "1cb7bc6270cf67aca22b59a0f9db40cd1b6bdb031cd1f6ed617a814878a7dc44"
   end
 
   depends_on "libpq"
   depends_on "mysql-client"
-  depends_on "openssl@1.1"
   depends_on "unixodbc"
   depends_on "zstd"
   depends_on "manticoresoftware/tap/manticore-backup" => :recommended

@@ -3,11 +3,11 @@ require "fileutils"
 class ManticoreBuddy < Formula
   desc "Manticore Search's sidecar which helps it with various tasks"
   homepage "https://github.com/manticoresoftware/manticoresearch-buddy"
-  license "GPL-2.0"
+  license "GPL-3.0"
 
-  version "2.3.12_24071807.45f6b91"
+  version "3.17.1+25012911-51758b05"
   url "https://repo.manticoresearch.com/repository/manticoresearch_macos/release/manticore-buddy_#{version}.tar.gz"
-  sha256 "59273e6fe0787fd5a77c7efed0c1b84b3d1dad79c488b3ac7718ca17ab617791"
+  sha256 "1eca492d4c2d53a9f2ef22540426fa8eea705deb5f32d631e88f597a21ebfab9"
 
   depends_on "curl"
 

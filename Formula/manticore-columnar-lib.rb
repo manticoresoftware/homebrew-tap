@@ -6,13 +6,13 @@ class ManticoreColumnarLib < Formula
   license "Apache-2.0"
 
   arch = Hardware::CPU.arch
-  version "2.3.0-24052206-88a01c3"
+  version "4.0.0-25012409-5aa8e43"
   url "https://repo.manticoresearch.com/repository/manticoresearch_macos/release/manticore-columnar-lib-#{version}-osx11.6-#{arch}.tar.gz"
 
   if arch.to_s == "x86_64" || arch.to_s == "amd64"
-    sha256 "4ced39a043b0239b2e4487fbc8e96f957ad6293f9db08566921fcbd1f424acb9"
+    sha256 "ebd83a80339adfb3d1fb7994de3baf919a16cadca8f2dcfba606f160a3ee9924"
   else
-    sha256 "6260eb089e9798d50a7a2b2b1bdf2d4df18c62f4a333479e29d47b49f8852532"
+    sha256 "2661bfcd7da74190aa94187c09f474e8c1afcfd9dfce75c14da2f7745e850cb7"
   end
 
   def install
