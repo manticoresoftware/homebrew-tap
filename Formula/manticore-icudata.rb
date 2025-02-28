@@ -5,7 +5,7 @@ class ManticoreIcudata < Formula
   license "UNICODE, INC. LICENSE"
 
   url "https://repo.manticoresearch.com/repository/manticoresearch_macos/release/manticore-icudata-65l.tar.gz"
-  sha256 "21a89bf39c919567554d632b7924a0928feb20a9425eb0c437a5f24d74c8d6a7"
+  sha256 "ce02b4df976f99140c4c41d1542a04696c0b4a47b0d88611fb072642ebee85af"
 
   def install
     (share/"manticore/icu").mkpath
