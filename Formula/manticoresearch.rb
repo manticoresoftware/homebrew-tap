@@ -6,7 +6,7 @@ class Manticoresearch < Formula
   license "GPL-3.0"
 
   arch = Hardware::CPU.arch
-  url "https://repo.manticoresearch.com/repository/manticoresearch_macos/release/manticore-7.0.0-25013002-92c650401-osx11.6-#{arch}-main.tar.gz"
+  url "https://repo.manticoresearch.com/repository/manticoresearch_macos/release/manticore-7.4.6-25022808-b2ff82920-osx11.6-#{arch}-main.tar.gz"
   version "7.4.6-25022808-b2ff82920"
 
   if arch.to_s == "x86_64" || arch.to_s == "amd64"
