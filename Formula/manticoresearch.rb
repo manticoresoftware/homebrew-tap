@@ -6,13 +6,13 @@ class Manticoresearch < Formula
   license "GPL-3.0"
 
   arch = Hardware::CPU.arch
-  url "https://repo.manticoresearch.com/repository/manticoresearch_macos/release/manticore-9.2.14-25032816-23296c0f8-osx11.6-#{arch}-main.tar.gz"
-  version "9.2.14-25032816-23296c0f8"
+  url "https://repo.manticoresearch.com/repository/manticoresearch_macos/release/manticore-9.3.2-25050208-428075261-osx11.6-#{arch}-main.tar.gz"
+  version "9.3.2-25050208-428075261"
 
   if arch.to_s == "x86_64" || arch.to_s == "amd64"
-    sha256 "1d42940cc150406ffa14ccdc728c3d27acb72c7b0d77915ed64a9a3d300ee77a"
+    sha256 "f9eefd667a9e12d597aed9ec62993db5c2267213e94696b1b90f5ad1b030e557"
   else
-    sha256 "b55312b833725d0e6bd4471ea6efcf37193a6a84cf8dfbcd00c6942c0f8e8ed9"
+    sha256 "2176d481020a4ca4c22d4082424f0a529cac0e60dbafc71e7bba5183473664ce"
   end
 
   depends_on "libpq"
@@ -22,6 +22,7 @@ class Manticoresearch < Formula
   depends_on "manticoresoftware/tap/manticore-backup" => :recommended
   depends_on "manticoresoftware/tap/manticore-buddy" => :recommended
   depends_on "manticoresoftware/tap/manticore-icudata" => :recommended
+  depends_on "manticoresoftware/tap/manticore-load" => :recommended
 
   conflicts_with "sphinx", because: "Manticore Search is a fork of Sphinxsearch"
 
