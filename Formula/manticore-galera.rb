@@ -10,11 +10,11 @@ class ManticoreGalera < Formula
   if arch.to_s == "x86_64" || arch.to_s == "amd64"
     version "3.37"
     url "https://repo.manticoresearch.com/repository/manticoresearch_macos/release/manticore-galera-#{version}-Darwin-osx11.6-x86_64.tar.gz"
-    sha256 "718ebe7ef7912f84d485dc108f4e8a30f9e933af8782e647abf411c382c11b99"
+    sha256 "3047eb0e87ff10f3d3904e37acd8e3a3c7994df75f16f6c4262d94704c157393"
   else
     version "3.37"
     url "https://repo.manticoresearch.com/repository/manticoresearch_macos/release/manticore-galera-#{version}-Darwin-osx11.6-arm64.tar.gz"
-    sha256 "c1269a284672939d8c29299621581faff63ef094739b7680ac3116132552e33d"
+    sha256 "97921556ad866e3644713aaaa0d328b5884fb3cd32564773aea2e01fe8203340"
   end
 
   def install
