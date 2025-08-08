@@ -20,7 +20,7 @@ class ManticoreColumnarLib < Formula
     share.install "usr/local/share/manticore/modules/lib_manticore_columnar.so" => "manticore/modules/lib_manticore_columnar.so"
     share.install "usr/local/share/manticore/modules/lib_manticore_secondary.so" => "manticore/modules/lib_manticore_secondary.so"
     share.install "usr/local/share/manticore/modules/lib_manticore_knn.so" => "manticore/modules/lib_manticore_knn.so"
-    share.install "usr/local/share/manticore/modules/lib_manticore_knn_embeddings.dylib" => "manticore/modules/libmanticore_knn_embeddings.dylib"
+    share.install "usr/local/share/manticore/modules/libmanticore_knn_embeddings.dylib" => "manticore/modules/libmanticore_knn_embeddings.dylib"
   end
 
   test do
