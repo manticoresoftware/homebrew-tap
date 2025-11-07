@@ -9,13 +9,13 @@ class ManticoreExecutor < Formula
   arch = Hardware::CPU.arch
 
   if arch.to_s == "x86_64" || arch.to_s == "amd64"
-    version "1.3.5+250708-6c4be4c"
+    version "1.3.6+25102902-defbddd7"
     url "https://repo.manticoresearch.com/repository/manticoresearch_macos/release/manticore-executor-#{version}-macos-x86_64.tar.gz"
-    sha256 "dd152d87b5c48e91b00134397d4aadf8b4a76c85de99597e3ef9738408b3bd87"
+    sha256 "e355e76a890586dddd38f29c41aba3cd822d1873964e103856b09569c6c058e7"
   else
-    version "1.3.5+250708-6c4be4c"
+    version "1.3.6+25102902-defbddd7"
     url "https://repo.manticoresearch.com/repository/manticoresearch_macos/release/manticore-executor-#{version}-macos-arm64.tar.gz"
-    sha256 "00676b4c5e64a5ae2cdb4c5c002d1868ee409f7f48b0bce32bea7f4addbc10b8"
+    sha256 "58dd48310ca4c26034ba5b13629fa105bac56256a1aad88a7b721554ddeb1c18"
   end
 
   depends_on "openssl"
@@ -23,6 +23,7 @@ class ManticoreExecutor < Formula
   depends_on "oniguruma"
   depends_on "librdkafka"
   depends_on "libzip"
+  depends_on "libiconv"
 
   def install
     bin.install "manticore-executor" => "manticore-executor"
