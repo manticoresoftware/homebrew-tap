@@ -10,9 +10,9 @@ class ManticoreExtra < Formula
   # we take version of "executor"
   arch = Hardware::CPU.arch
   if arch.to_s == "x86_64" || arch.to_s == "amd64"
-    version "1.1.12-24071807-0565a65"
+    version "1.3.6+25102902-defbddd7"
   else
-    version "1.1.12-24071807-0565a65"
+    version "1.3.6+25102902-defbddd7"
   end
 
   depends_on "manticoresoftware/tap/manticore-columnar-lib"
