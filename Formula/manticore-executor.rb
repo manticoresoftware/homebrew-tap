@@ -9,13 +9,13 @@ class ManticoreExecutor < Formula
   arch = Hardware::CPU.arch
 
   if arch.to_s == "x86_64" || arch.to_s == "amd64"
-    version "1.3.6+25102902-defbddd7"
+    version "1.4.0+26012715-d7a66c60"
     url "https://repo.manticoresearch.com/repository/manticoresearch_macos/release/manticore-executor-#{version}-macos-x86_64.tar.gz"
-    sha256 "e355e76a890586dddd38f29c41aba3cd822d1873964e103856b09569c6c058e7"
+    sha256 "536e99e7d116b977ebae978e0a1802ac7f37e1c00770fb3d728d7af536fd241f"
   else
-    version "1.3.6+25102902-defbddd7"
+    version "1.4.0+26012715-d7a66c60"
     url "https://repo.manticoresearch.com/repository/manticoresearch_macos/release/manticore-executor-#{version}-macos-arm64.tar.gz"
-    sha256 "58dd48310ca4c26034ba5b13629fa105bac56256a1aad88a7b721554ddeb1c18"
+    sha256 "978c3fcb995ce436f3072308cba7678bf5e2bf7a70bcf5a1aa6c849c6c1a4671"
   end
 
   depends_on "openssl"
