@@ -16,6 +16,7 @@ class Manticoresearch < Formula
   end
 
   depends_on "libpq"
+  depends_on "curl"
   depends_on "mysql-client"
   depends_on "unixodbc"
   depends_on "zstd"
